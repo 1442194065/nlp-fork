@@ -1,0 +1,236 @@
+abstract
+Few-shot learning is a challenging task that
+requires language models to generalize from
+limited examples. Large language models
+like GPT-3 and PaLM have made impressive
+progress in this area, but they still face diffi￾culties in reasoning tasks such as GSM8K, a
+benchmark for arithmetic problems. To im￾prove their reasoning skills, previous work has
+proposed to guide the language model with
+prompts that elicit a series of reasoning steps
+before giving the final answer, achieving a sig￾nificant improvement on GSM8K from 17.9%
+to 58.1% in problem-solving rate. In this pa￾per, we present DIVERSE (Diverse Verifier on
+Reasoning Step), a novel approach that further
+enhances the reasoning capability of language
+models. DIVERSE has three main components:
+first, it generates diverse prompts to explore dif￾ferent reasoning paths for the same question;
+second, it uses a verifier to filter out incorrect
+answers based on a weighted voting scheme;
+and third, it verifies each reasoning step indi￾vidually instead of the whole chain. We eval￾uate DIVERSE on the latest language model
+code-davinci-002 and show that it achieves new
+state-of-the-art results on six of eight reasoning
+benchmarks (e.g., GSM8K 74.4% → 83.2%).
+1 Introduction
+Large pretrained language models (PLMs) have
+shown remarkable performance on various natural
+language processing tasks, either by few-shot learn￾ing with prompts (Radford et al., 2019; Le Scao
+and Rush, 2021; Jin et al., 2022) or by fine-tuning
+(Houlsby et al., 2019; Hu et al., 2021; He et al.,
+2022). However, despite the increasing size and
+capacity of PLMs such as GPT-3 with 175B param￾eters (Brown et al., 2020) and PaLM with 540B
+parameters (Chowdhery et al., 2022), their reason￾ing abilities are still limited and often require mul-
+∗Work was done during an internship at Microsoft Re￾search Asia.
+Figure 1: Our proposed method, DIVERSE (Diverse
+Verifier on Reasoning Step).
+tiple steps to produce correct answers, especially
+for tasks involving arithmetic, commonsense, or
+inductive reasoning (Cobbe et al., 2021).
+Recent works (Wei et al., 2022; Zhou et al., 2022;
+Kojima et al., 2022; Lampinen et al., 2022) have
+demonstrated that PLMs possess some latent rea￾soning capabilities, but they need carefully de￾signed prompts to activate them. For instance, Wei
+et al. (2022) proposed chain-of-thought reasoning,
+which inserts multi-step reasoning paths before gen￾erating the final answers, and achieved significant
+improvement on the GSM8K arithmetic benchmark
+(Cobbe et al., 2021). Wang et al. (2022c) further
+introduced a voting mechanism to select the most
+consistent answer among different reasoning paths,
+and achieved state-of-the-art results on several rea￾soning benchmarks using the PaLM model (Chowd￾hery et al., 2022). Building on these successes, this
+paper continues this line of research and advances
+the reasoning capabilities of PLMs in three aspects,
+as illustrated in Figure 1.
+First, we propose to increase the diversity of rea￾soning paths by not only sampling from a single
+prompt, but also varying the prompt itself. We hy￾pothesize that different prompts can elicit different
+ways of thinking, while the correct answer should
+be robust to these variations. Second, we propose
+to use a verifier to score the quality of each rea￾soning path and guide the voting mechanism. We
+argue that not all reasoning paths are equally good
+arXiv:2206.02336v3 [cs.CL] 24 May 2023
+Chain-Of-Thought Reasoning for GSM8K Math Word Problem
+Q: If there are 3 cars in the parking lot and 2 more
+cars arrive, how many cars are in the parking lot?
+A: There are 3 cars in the parking lot already. 2 more
+arrive. Now there are 3 + 2 = 5 cars. The answer is 5.
+...
+Q: Janet’s ducks lay 16 eggs per day. She eats three
+for breakfast every morning and bakes muffins for her
+friends every day with four. She sells the remainder
+for $2 per egg. How much does she make every day?
+A: She has 16 - 3 - 4 = 9 eggs left. So she makes
+2 ∗ 9 =18 per day. The answer is 18.
+Figure 2: Chain-of-thought reasoning for GSM8K math
+word problem. The prompt is colored black and the rea￾soning path produced by the language model is colored
+teal. This reasoning path contains two reasoning steps.
+or reliable, and some may contain errors or incon￾sistencies that can be detected by the verifier. Third,
+we propose to assign a fine-grained label to each
+step of the reasoning path and use a step-aware
+verifier to attribute the correctness or wrongness of
+the final answer to each step. We conjecture that
+some steps may be correct but followed by wrong
+steps or vice versa, and identifying these cases can
+help diagnose and improve the reasoning process.
+We name our method as DIVERSE (diverse ver￾ifier on reasoning step) and evaluate it on eight
+reasoning benchmarks that require different types
+of reasoning skills. We use three OpenAI PLMs
+(davinci, text-davinci-002, and code-davinci-002)
+and compare our results with recent state-of-the-art
+methods. We find that DIVERSE can consistently
+and significantly improve the performance of PLMs
+on these tasks, and achieve new state-of-the-art re￾sults on six of them1
+: GSM8K (74.4% → 83.2%),
+AsDiv (81.9% → 88.7%), MultiArith (99.3% →
+99.8%), SVAMP(86.6% → 87.0%), SingleEq
+(79.5% → 94.9%), and CLUTRR (67.0% →
+95.9%).
+Our data is publicly available at https://github.
+com/microsoft/DiVeRSe.
+2 Diverse Verifier on Reasoning Step
+Figure 1 shows the overview of DIVERSE. The
+key insights are three-fold: (1) leveraging diverse
+prompts to induce more diverse reasoning paths
+from the language models (Section 2.1); (2) train-
+1Most of the previous SOTA results were achieved by self￾consistency on PaLM-540B(Chowdhery et al., 2022).
+ing a voting verifier to better derive the final an￾swers from multiple reasoning paths (Section 2.2);
+(3) leveraging step correctness to further boost the
+voting verifier (Section 2.3).
+2.1 Diverse Prompts
+To reason effectively, it is beneficial to explore
+diverse reasoning paths, following the idea that
+“All Roads lead to Rome”. Wang et al. (2022c)
+proposed to generate various reasoning paths from
+language models by sampling decoding. However,
+their method relies on a fixed set of exemplars for
+all prompts, which may introduce bias and limit
+the diversity of the generated reasoning paths. To
+address this issue, we randomly select M1 different
+prompts for each question, and then sample M2
+reasoning paths for each prompt using sampling
+decoding. This way, we obtain M = M1 × M2
+diverse reasoning paths for each question.2
+2.2 Voting Verifier
+Verifier. The verifier takes a question and a candi￾date reasoning path as input, and outputs the prob￾ability that the reasoning path leads to the correct
+answer. We use deberta-v3-large (He et al., 2021)
+as the backbone model, with a small scalar head
+that outputs predictions on the [CLS] token.
+Training the verifier. For each training question,
+we generate multiple candidate reasoning paths
+using chain-of-thought reasoning. We regard the
+reasoning paths that match the ground truth final
+answer as positive, and the others as negative.
+Voting Verifier. Wang et al. (2022c) use major￾ity voting to aggregate the predictions of different
+reasoning paths. This method may fail when the
+majority of the reasoning paths are misled, while
+the minority of the reasoning paths are reasonable.
+We propose voting verifier, which leverages both
+voting and verifier:
+ˆy = arg max
+y
+M
+X
+i=1
+✶yi=y · f(xi
+, zi
+, yi), (1)
+where ✶yi=y is an indicator function that returns 1
+(or 0) if yi = y (or not), and f(·) is the probability
+produced by the verifier.
+2.3 Step-aware Voting Verifier
+Each reasoning path consists of several steps. We
+hypothesize that not all the steps in an incorrect
+2Our main experiments use M1 = 5 and M2 = 20.
+Figure 3: How step-level labels are extracted. This
+figure shows four reasoning paths for a math word problem: the first two are positive and the bottom two are
+negative. The path 7 → 9 → 18 means that the first step
+calculates 7, the second step calculates 9, and the third
+step calculates the final answer 18. For the last path, the
+third step (which calculates 8) has never occurred in any
+positive reasoning paths, thus we regard this step and
+all steps after it as negative steps.
+reasoning path are equally wrong, and some steps
+may still be useful for reasoning. To exploit this,
+we extend the voting verifier to a step-aware voting
+verifier by introducing an extended loss function:
+L = L0 + α · L1,
+L1 =
+|Dˆ|
+X
+i=1
+|Si|
+X
+j=1
+BCE(labeli,j , f′
+(inputi
+, j)).
+(2)
+α is a hyperparameter to balance the original
+loss L0 and the step-level auxiliary loss L1;
+Si,1, Si,2, ..., Si,|Si| are the steps in zi
+; labeli,j indicates whether Si,j is correct or not; f
+′
+(inputi
+, j)
+represents the probability of the positive label for
+Si,j .
+3
+To obtain the step-level labels (i.e., labeli,j ) for
+negative training data with wrong answers, we design an algorithm that compares intermediate results among steps in positive/negative reasoning
+paths. Figure 3 illustrates this algorithm. This
+algorithm can not only work on math word problems, but also generalize to other reasoning tasks:
+we use an off-the-shelf natural language inference
+model, roberta-large-mnli (Liu et al., 2019), to
+check whether two reasoning steps are semantically equivalent or not. Given a reasoning step, if
+we cannot find any semantically equivalent step in
+3
+Specifically, f
+′
+(inputi
+, j) is predicted from the hidden
+state of the last token of Si,j in DEBERTA-V3-LARGE, similar
+to token classification tasks.
+the positive reasoning paths, we label it and all the
+subsequent steps as negative steps.
+3 Experimental Setup
+3.1 Reasoning Tasks
+Arithmetic Reasoning. Following Wang et al.
+(2022c), we use AsDiv (Miao et al., 2020), SingleEq (Koncel-Kedziorski et al., 2015), MultiArith
+(Roy and Roth, 2015), SVAMP (Patel et al., 2021),
+and GSM8K (Cobbe et al., 2021).
+Commonsense Reasoning. Following Wang
+et al. (2022c), we use CommonsenseQA (Talmor
+et al., 2019) and StrategyQA (Geva et al., 2021).
+Inductive Reasoning. We use CLUTRR (Sinha
+et al., 2019), a diagnostic benchmark for inductive reasoning, requiring inferring kinship relations
+between characters in short stories.
+3.2 Details
+Language Models. We use three OpenAI language models: davinci, text-davinci-002 and codedavinci-002. We use the default parameters except
+a temperature of 0.5 in sampling.
+Exemplars. For arithmetic/commonsense/inductive reasoning, each prompt contains 5/7/7 exemplars. For DIVERSE, each question has 5 different prompts, and 20 reasoning paths are sampled
+from the language model for each prompt. For
+arithmetic reasoning, the exemplars are randomly
+sampled from the training dataset of GSM8K; for
+CLUTRR, the exemplars are sampled from its training dataset, with reasoning paths synthesized by
+handcraft rules (detailed settings for CLUTRR are
+listed in Appendix D); for StrategyQA and CommonsenseQA, their original datasets do not contain
+enough exemplars with well-annotated reasoning
+paths, so we construct 1, 000 pseudo exemplars by
+“self-teaching” (the approach and the noise issue are
+discussed in Appendix B) from “seed” exemplars
+provided by Wei et al. (2022).
+Training Datasets. For each task, we sample
+1, 000 ⟨question, answer⟩ pairs from the training
+dataset to train the verifier.
+Verifier. We fine-tune deberta-v3-large (He et al.,
+2021) with learning rate 1 × 10−5
+and batch size
+128. For the step-aware verifier, we select the best
+α among 0.0/0.1/0.2/0.3.
+
+
