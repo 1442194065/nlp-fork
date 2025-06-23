@@ -1,0 +1,290 @@
+(nlp_env) PS C:\Users\14421\nlp> python aqua_verifier_final_test.py
+欢迎使用AQuA数据集Verifier效果验证实验！
+实验设置: 10题 × 10路径
+================================================================================
+🧪 AQuA数据集 Verifier效果最终验证实验
+🔧 初始化实验组件...
+🔄 加载增强版Verifier模型...
+Some weights of RobertaModel were not initialized from the model checkpoint at roberta-base and are newly initialized: ['pooler.dense.bias', 'pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+✅ 增强版模型加载成功
+📋 加载AQuA测试数据...
+Loaded 254 test examples
+📊 选择 10 个测试题目，每题生成 10 个推理路径
+
+🚀 开始AQuA实验...
+
+--- 问题 1/10 ---
+问题: The sum of the 5 consecutive two digit odd numbers when divided by 10 becomes a perfect square, whic...
+选项: A)47, B)91, C)41...
+正确答案: C
+   🤖 生成推理路径...
+Generating diverse paths for: The sum of the 5 consecutive two digit odd numbers...
+API request failed: Response ended prematurely
+Error generating response 0-4: Response ended prematurely
+API request failed: Response ended prematurely
+Error generating response 1-1: Response ended prematurely
+API request failed: Response ended prematurely
+Error generating response 1-2: Response ended prematurely
+API request failed: Response ended prematurely
+Error generating response 1-3: Response ended prematurely
+API request failed: Response ended prematurely
+Error generating response 1-4: Response ended prematurely
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 1/5 (20.0%)
+   🗳️  基线预测: A ❌ (投票: {'A': 3, 'E': 1, 'C': 1})
+   🔍 Verifier评分推理路径...
+     路径1: 0.632 -> A ❌
+     路径2: 0.619 -> A ❌
+     路径3: 0.617 -> A ❌
+     路径4: 0.656 -> E ❌
+     路径5: 0.604 -> C ✅
+   ⚖️  加权投票: {'A': 1.8670860528945923, 'E': 0.6558277606964111, 'C': 0.6044619679450989}
+   🎯 Verifier预测: A ❌
+   📊 区分度: -0.026 (正确:0.604 vs 错误:0.631)
+   📈 累计准确率: 基线0.0% vs Verifier0.0%
+
+--- 问题 2/10 ---
+问题: If 75 percent of the employees of a certain company take a winter vacation, 40 percent take a winter...
+选项: A)5%, B)15%, C)25%...
+正确答案: A
+   🤖 生成推理路径...
+Generating diverse paths for: If 75 percent of the employees of a certain compan...
+   ✅ 生成 10 个推理路径
+   📊 正确推理: 10/10 (100.0%)
+   🗳️  基线预测: A ✅ (投票: {'A': 10})
+   🔍 Verifier评分推理路径...
+     路径1: 0.583 -> A ✅
+     路径2: 0.667 -> A ✅
+     路径3: 0.599 -> A ✅
+     路径4: 0.595 -> A ✅
+     路径5: 0.575 -> A ✅
+     路径6: 0.661 -> A ✅
+     路径7: 0.660 -> A ✅
+     路径8: 0.629 -> A ✅
+     路径9: 0.767 -> A ✅
+     路径10: 0.681 -> A ✅
+   ⚖️  加权投票: {'A': 6.417431473731995}
+   🎯 Verifier预测: A ✅
+   📈 累计准确率: 基线50.0% vs Verifier50.0%
+
+--- 问题 3/10 ---
+问题: A father wants to divide Rs. 5100 between his two sons, Mohan and Sohan who are 23 and 24 at present...
+选项: A)2400, B)2500, C)2600...
+正确答案: B
+   🤖 生成推理路径...
+Generating diverse paths for: A father wants to divide Rs. 5100 between his two ...
+   ✅ 生成 10 个推理路径
+   📊 正确推理: 10/10 (100.0%)
+   🗳️  基线预测: B ✅ (投票: {'B': 10})
+   🔍 Verifier评分推理路径...
+     路径1: 0.640 -> B ✅
+     路径2: 0.642 -> B ✅
+     路径3: 0.624 -> B ✅
+     路径4: 0.636 -> B ✅
+     路径5: 0.606 -> B ✅
+     路径6: 0.633 -> B ✅
+     路径7: 0.635 -> B ✅
+     路径8: 0.639 -> B ✅
+     路径9: 0.661 -> B ✅
+     路径10: 0.658 -> B ✅
+   ⚖️  加权投票: {'B': 6.37550151348114}
+   🎯 Verifier预测: B ✅
+   📈 累计准确率: 基线66.7% vs Verifier66.7%
+
+--- 问题 4/10 ---
+问题: Suppose you can travel from a place M to a place N by 3 buses, from place N to place O by 4 buses, f...
+选项: A)24, B)36, C)72...
+正确答案: B
+   🤖 生成推理路径...
+Generating diverse paths for: Suppose you can travel from a place M to a place N...
+   ✅ 生成 10 个推理路径
+   📊 正确推理: 6/10 (60.0%)
+   🗳️  基线预测: B ✅ (投票: {'B': 6, 'A': 4})
+   🔍 Verifier评分推理路径...
+     路径1: 0.621 -> B ✅
+     路径2: 0.619 -> B ✅
+     路径3: 0.605 -> A ❌
+     路径4: 0.623 -> B ✅
+     路径5: 0.607 -> B ✅
+     路径6: 0.601 -> A ❌
+     路径7: 0.620 -> A ❌
+     路径8: 0.611 -> B ✅
+     路径9: 0.602 -> A ❌
+     路径10: 0.603 -> B ✅
+   ⚖️  加权投票: {'B': 3.684764087200165, 'A': 2.427322566509247}
+   🎯 Verifier预测: B ✅
+   📊 区分度: 0.007 (正确:0.614 vs 错误:0.607)
+   📈 累计准确率: 基线75.0% vs Verifier75.0%
+
+--- 问题 5/10 ---
+问题: A train M leaves City A at 5 am and reaches City B at 9am. Another train N leaves City B at 7am and ...
+选项: A)1 hr 23 min, B)1 hr 15 min, C)1 hr 8 min...
+正确答案: D
+   🤖 生成推理路径...
+Generating diverse paths for: A train M leaves City A at 5 am and reaches City B...
+   ✅ 生成 10 个推理路径
+   📊 正确推理: 10/10 (100.0%)
+   🗳️  基线预测: D ✅ (投票: {'D': 10})
+   🔍 Verifier评分推理路径...
+     路径1: 0.562 -> D ✅
+     路径2: 0.570 -> D ✅
+     路径3: 0.573 -> D ✅
+     路径4: 0.598 -> D ✅
+     路径5: 0.585 -> D ✅
+     路径6: 0.616 -> D ✅
+     路径7: 0.657 -> D ✅
+     路径8: 0.644 -> D ✅
+     路径9: 0.619 -> D ✅
+     路径10: 0.602 -> D ✅
+   ⚖️  加权投票: {'D': 6.026178359985352}
+   🎯 Verifier预测: D ✅
+   📈 累计准确率: 基线80.0% vs Verifier80.0%
+
+--- 问题 6/10 ---
+问题: For bringing each copper coin from the bottom of a river, a coin-diver gets 20 cents, and for each b...
+选项: A)4, B)3, C)2...
+正确答案: C
+   🤖 生成推理路径...
+Generating diverse paths for: For bringing each copper coin from the bottom of a...
+   ✅ 生成 10 个推理路径
+   📊 正确推理: 8/10 (80.0%)
+   🗳️  基线预测: C ✅ (投票: {'C': 8, 'E': 1, 'B': 1})
+   🔍 Verifier评分推理路径...
+     路径1: 0.671 -> C ✅
+     路径2: 0.621 -> C ✅
+     路径3: 0.663 -> C ✅
+     路径4: 0.592 -> C ✅
+     路径5: 0.667 -> C ✅
+     路径6: 0.640 -> C ✅
+     路径7: 0.682 -> E ❌
+     路径8: 0.721 -> C ✅
+     路径9: 0.647 -> C ✅
+     路径10: 0.646 -> B ❌
+   ⚖️  加权投票: {'C': 5.22052264213562, 'E': 0.6823254823684692, 'B': 0.6456782817840576}        
+   🎯 Verifier预测: C ✅
+   📊 区分度: -0.011 (正确:0.653 vs 错误:0.664)
+   📈 累计准确率: 基线83.3% vs Verifier83.3%
+
+--- 问题 7/10 ---
+问题: 5 horses are in a race. Mr.Jain selects two of horses at random and bets on them. The probability th...
+选项: A)1/5, B)2/5, C)3/5...
+正确答案: B
+   🤖 生成推理路径...
+Generating diverse paths for: 5 horses are in a race. Mr.Jain selects two of hor...
+   ✅ 生成 10 个推理路径
+   📊 正确推理: 6/10 (60.0%)
+   🗳️  基线预测: B ✅ (投票: {'A': 4, 'B': 6})
+   🔍 Verifier评分推理路径...
+     路径1: 0.618 -> A ❌
+     路径2: 0.601 -> B ✅
+     路径3: 0.634 -> A ❌
+     路径4: 0.605 -> A ❌
+     路径5: 0.621 -> A ❌
+     路径6: 0.644 -> B ✅
+     路径7: 0.625 -> B ✅
+     路径8: 0.612 -> B ✅
+     路径9: 0.631 -> B ✅
+     路径10: 0.613 -> B ✅
+   ⚖️  加权投票: {'A': 2.4782785773277283, 'B': 3.7267879247665405}
+   🎯 Verifier预测: B ✅
+   📊 区分度: 0.002 (正确:0.621 vs 错误:0.620)
+   📈 累计准确率: 基线85.7% vs Verifier85.7%
+
+--- 问题 8/10 ---
+问题: A straight picket fence is composed of x pickets each of which is 1/2 inch wide. If there are 6 inch...
+选项: A)13x/2, B)13x/2 - 6, C)13x/24...
+正确答案: E
+   🤖 生成推理路径...
+Generating diverse paths for: A straight picket fence is composed of x pickets e...
+   ✅ 生成 10 个推理路径
+   📊 正确推理: 10/10 (100.0%)
+   🗳️  基线预测: E ✅ (投票: {'E': 10})
+   🔍 Verifier评分推理路径...
+     路径1: 0.763 -> E ✅
+     路径2: 0.598 -> E ✅
+     路径3: 0.675 -> E ✅
+     路径4: 0.612 -> E ✅
+     路径5: 0.684 -> E ✅
+     路径6: 0.700 -> E ✅
+     路径7: 0.710 -> E ✅
+     路径8: 0.695 -> E ✅
+     路径9: 0.657 -> E ✅
+     路径10: 0.705 -> E ✅
+   ⚖️  加权投票: {'E': 6.8002936244010925}
+   🎯 Verifier预测: E ✅
+   📈 累计准确率: 基线87.5% vs Verifier87.5%
+
+--- 问题 9/10 ---
+问题: If 27 bottles of soda cost A cents, how much will B bottles cost in dollars?...
+选项: A)AB/2700, B)27/AB, C)AB/270...
+正确答案: A
+   🤖 生成推理路径...
+Generating diverse paths for: If 27 bottles of soda cost A cents, how much will ...
+   ✅ 生成 10 个推理路径
+   📊 正确推理: 7/10 (70.0%)
+   🗳️  基线预测: A ✅ (投票: {'B': 3, 'A': 7})
+   🔍 Verifier评分推理路径...
+     路径1: 0.652 -> B ❌
+     路径2: 0.658 -> A ✅
+     路径3: 0.697 -> B ❌
+     路径4: 0.645 -> B ❌
+     路径5: 0.656 -> A ✅
+     路径6: 0.650 -> A ✅
+     路径7: 0.649 -> A ✅
+     路径8: 0.690 -> A ✅
+     路径9: 0.675 -> A ✅
+     路径10: 0.651 -> A ✅
+   ⚖️  加权投票: {'B': 1.9943442940711975, 'A': 4.6277916431427}
+   🎯 Verifier预测: A ✅
+   📊 区分度: -0.004 (正确:0.661 vs 错误:0.665)
+   📈 累计准确率: 基线88.9% vs Verifier88.9%
+
+--- 问题 10/10 ---
+问题: Professors borrowed Rs. 5000 from the university at simple interest. After 3 years, the university g...
+选项: A)2%, B)8%, C)5%...
+正确答案: A
+   🤖 生成推理路径...
+Generating diverse paths for: Professors borrowed Rs. 5000 from the university a...
+   ✅ 生成 10 个推理路径
+   📊 正确推理: 10/10 (100.0%)
+   🗳️  基线预测: A ✅ (投票: {'A': 10})
+   🔍 Verifier评分推理路径...
+     路径1: 0.638 -> A ✅
+     路径2: 0.644 -> A ✅
+     路径3: 0.639 -> A ✅
+     路径4: 0.637 -> A ✅
+     路径5: 0.635 -> A ✅
+     路径6: 0.653 -> A ✅
+     路径7: 0.628 -> A ✅
+     路径8: 0.634 -> A ✅
+     路径9: 0.622 -> A ✅
+     路径10: 0.631 -> A ✅
+   ⚖️  加权投票: {'A': 6.361441493034363}
+   🎯 Verifier预测: A ✅
+   📈 累计准确率: 基线90.0% vs Verifier90.0%
+
+================================================================================
+🏆 AQuA数据集实验最终结果
+================================================================================
+📊 基线方法（多数投票）准确率: 90.00% (9/10)
+📊 增强版Verifier准确率: 90.00% (9/10)
+📈 准确率提升: +0.00%
+
+⚡ 平手：Verifier效果与基线相当
+
+🔍 Verifier质量分析:
+   总评分范围: [0.562, 0.767]
+   正确推理平均分: 0.639 ± 0.039
+   错误推理平均分: 0.632 ± 0.027
+   整体区分度: 0.007
+   平均每题区分度: -0.003 ± 0.009
+   ⚠️  Verifier区分能力仍需提升
+
+💾 详细结果已保存到: ./outputs\aqua_verifier_final_test_20250623_192940.json
+
+================================================================================
+🎯 实验结论
+================================================================================
+📈 虽然准确率提升有限，但Verifier已具备推理质量区分能力 
+   区分度: 0.007，为进一步优化奠定基础

@@ -379,8 +379,8 @@ def main():
     print("欢迎使用AQuA数据集Verifier效果验证实验！")
     
     # 可以调整实验参数
-    num_questions = 25  # 测试题目数量
-    paths_per_question = 5  # 每题生成的推理路径数
+    num_questions = 10  # 测试题目数量
+    paths_per_question = 10  # 每题生成的推理路径数
     
     print(f"实验设置: {num_questions}题 × {paths_per_question}路径")
     
