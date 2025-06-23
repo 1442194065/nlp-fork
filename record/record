@@ -1,0 +1,553 @@
+(nlp_env) PS C:\Users\14421\nlp> python aqua_verifier_final_test.py
+欢迎使用AQuA数据集Verifier效果验证实验！
+实验设置: 25题 × 5路径
+================================================================================
+🧪 AQuA数据集 Verifier效果最终验证实验
+🔧 初始化实验组件...
+🔄 加载增强版Verifier模型...
+Some weights of RobertaModel were not initialized from the model checkpoint at roberta-base and ar
+e newly initialized: ['pooler.dense.bias', 'pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions an
+📊 选择 25 个测试题目，每题生成 5 个推理路径                                                      
+🚀 开始AQuA实验...
+
+--- 问题 1/25 ---
+问题: Shweta rides at the rate of 10 km per hour but stops for 10 minutes to take rest at the end 
+of every...
+选项: A)9 hours., B)10 hours., C)11 hours....
+正确答案: C
+   🤖 生成推理路径...
+Generating diverse paths for: Shweta rides at the rate of 10 km per hour but sto...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 3/5 (60.0%)
+   🗳️  基线预测: C ✅ (投票: {'A': 2, 'C': 3})
+   🔍 Verifier评分推理路径...
+     路径1: 0.645 -> A ❌
+     路径2: 0.575 -> C ✅
+     路径3: 0.630 -> C ✅
+     路径4: 0.650 -> C ✅
+     路径5: 0.657 -> A ❌
+   ⚖️  加权投票: {'A': 1.301802933216095, 'C': 1.8541889190673828}
+   🎯 Verifier预测: C ✅
+   📊 区分度: -0.033 (正确:0.618 vs 错误:0.651)
+   📈 累计准确率: 基线100.0% vs Verifier100.0%
+
+--- 问题 2/25 ---
+问题: Consider there is an staircase elevator and you are coming down. If you walk 20 steps and st
+op, then...
+选项: A)1 step/minute, B)2 step/minute, C)3 step/minute...
+正确答案: A
+   🤖 生成推理路径...
+Generating diverse paths for: Consider there is an staircase elevator and you ar...
+API request failed: Response ended prematurely
+Error generating response 0-2: Response ended prematurely
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: A ✅ (投票: {'A': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.550 -> A ✅
+     路径2: 0.534 -> A ✅
+     路径3: 0.544 -> A ✅
+     路径4: 0.546 -> A ✅
+     路径5: 0.559 -> A ✅
+   ⚖️  加权投票: {'A': 2.7328076362609863}
+   🎯 Verifier预测: A ✅
+   📈 累计准确率: 基线100.0% vs Verifier100.0%
+
+--- 问题 3/25 ---
+问题: [5 + ? × 19 - 15 - 7]/[13 × 13 - 156] = 6...
+选项: A)4, B)4.5, C)5...
+正确答案: C
+   🤖 生成推理路径...
+Generating diverse paths for: [5 + ? × 19 - 15 - 7]/[13 × 13 - 156] = 6...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: C ✅ (投票: {'C': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.865 -> C ✅
+     路径2: 0.692 -> C ✅
+     路径3: 0.688 -> C ✅
+     路径4: 0.709 -> C ✅
+     路径5: 0.855 -> C ✅
+   ⚖️  加权投票: {'C': 3.8081806898117065}
+   🎯 Verifier预测: C ✅
+   📈 累计准确率: 基线100.0% vs Verifier100.0%
+
+--- 问题 4/25 ---
+问题: Add: +45 and -30...
+选项: A)-30, B)+30, C)0...
+正确答案: D
+   🤖 生成推理路径...
+Generating diverse paths for: Add: +45 and -30...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: D ✅ (投票: {'D': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.606 -> D ✅
+     路径2: 0.638 -> D ✅
+     路径3: 0.664 -> D ✅
+     路径4: 0.652 -> D ✅
+     路径5: 0.626 -> D ✅
+   ⚖️  加权投票: {'D': 3.186773896217346}
+   🎯 Verifier预测: D ✅
+   📈 累计准确率: 基线100.0% vs Verifier100.0%
+
+--- 问题 5/25 ---
+问题: A company contracts to paint 3 houses. Mr.Brown can paint a house in 6 days while Mr.Black w
+ould tak...
+选项: A)7, B)8, C)10...
+正确答案: D
+   🤖 生成推理路径...
+Generating diverse paths for: A company contracts to paint 3 houses. Mr.Brown ca...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: D ✅ (投票: {'D': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.591 -> D ✅
+     路径2: 0.542 -> D ✅
+     路径3: 0.543 -> D ✅
+     路径4: 0.575 -> D ✅
+     路径5: 0.557 -> D ✅
+   ⚖️  加权投票: {'D': 2.808319389820099}
+   🎯 Verifier预测: D ✅
+   📈 累计准确率: 基线100.0% vs Verifier100.0%
+
+--- 问题 6/25 ---
+问题: If 27 bottles of soda cost A cents, how much will B bottles cost in dollars?...
+选项: A)AB/2700, B)27/AB, C)AB/270...
+正确答案: A
+   🤖 生成推理路径...
+Generating diverse paths for: If 27 bottles of soda cost A cents, how much will ...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 4/5 (80.0%)
+   🗳️  基线预测: A ✅ (投票: {'A': 4, 'B': 1})
+   🔍 Verifier评分推理路径...
+     路径1: 0.739 -> A ✅
+     路径2: 0.634 -> B ❌
+     路径3: 0.671 -> A ✅
+     路径4: 0.648 -> A ✅
+     路径5: 0.663 -> A ✅
+   ⚖️  加权投票: {'A': 2.72081857919693, 'B': 0.634427011013031}
+   🎯 Verifier预测: A ✅
+   📊 区分度: 0.046 (正确:0.680 vs 错误:0.634)
+   📈 累计准确率: 基线100.0% vs Verifier100.0%
+
+--- 问题 7/25 ---
+问题: Everyone in the family earns money each month. If the total income of a family per month is 
+$9000 an...
+选项: A)2, B)3, C)4...
+正确答案: B
+   🤖 生成推理路径...
+Generating diverse paths for: Everyone in the family earns money each month. If ...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: B ✅ (投票: {'B': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.621 -> B ✅
+     路径2: 0.601 -> B ✅
+     路径3: 0.605 -> B ✅
+     路径4: 0.593 -> B ✅
+     路径5: 0.643 -> B ✅
+   ⚖️  加权投票: {'B': 3.063796818256378}
+   🎯 Verifier预测: B ✅
+   📈 累计准确率: 基线100.0% vs Verifier100.0%
+
+--- 问题 8/25 ---
+问题: You can purchase one soda and two energy bars for 150 cents, or two sodas and three energy b
+ars for ...
+选项: A)500, B)600, C)750...
+正确答案: E
+   🤖 生成推理路径...
+Generating diverse paths for: You can purchase one soda and two energy bars for ...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: E ✅ (投票: {'E': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.617 -> E ✅
+     路径2: 0.609 -> E ✅
+     路径3: 0.601 -> E ✅
+     路径4: 0.657 -> E ✅
+     路径5: 0.619 -> E ✅
+   ⚖️  加权投票: {'E': 3.1019574403762817}
+   🎯 Verifier预测: E ✅
+   📈 累计准确率: 基线100.0% vs Verifier100.0%
+
+--- 问题 9/25 ---
+问题: there are more than 501 students in a school such that 20% of them exactly took physics and 
+28% of t...
+选项: A)550, B)570, C)600...
+正确答案: E
+   🤖 生成推理路径...
+Generating diverse paths for: there are more than 501 students in a school such ...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 3/5 (60.0%)
+   🗳️  基线预测: E ✅ (投票: {'E': 3, 'A': 2})
+   🔍 Verifier评分推理路径...
+     路径1: 0.645 -> E ✅
+     路径2: 0.636 -> E ✅
+     路径3: 0.680 -> A ❌
+     路径4: 0.616 -> E ✅
+     路径5: 0.670 -> A ❌
+   ⚖️  加权投票: {'E': 1.8969528675079346, 'A': 1.3505367040634155}
+   🎯 Verifier预测: E ✅
+   📊 区分度: -0.043 (正确:0.632 vs 错误:0.675)
+   📈 累计准确率: 基线100.0% vs Verifier100.0%
+
+--- 问题 10/25 ---
+问题: Calculate the maximum distance you can travel with $8.50 on a cab which charges $3.50 for th
+e first ...
+选项: A)11.75 miles, B)12.75 miles, C)17.75 miles...
+正确答案: B
+   🤖 生成推理路径...
+Generating diverse paths for: Calculate the maximum distance you can travel with...
+API request failed: Response ended prematurely
+Error generating response 1-2: Response ended prematurely
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 1/5 (20.0%)
+   🗳️  基线预测: A ❌ (投票: {'A': 4, 'B': 1})
+   🔍 Verifier评分推理路径...
+     路径1: 0.644 -> A ❌
+     路径2: 0.614 -> A ❌
+     路径3: 0.606 -> A ❌
+     路径4: 0.651 -> A ❌
+     路径5: 0.604 -> B ✅
+   ⚖️  加权投票: {'A': 2.5148509740829468, 'B': 0.6043662428855896}
+   🎯 Verifier预测: A ❌
+   📊 区分度: -0.024 (正确:0.604 vs 错误:0.629)
+   📈 累计准确率: 基线90.0% vs Verifier90.0%
+
+--- 问题 11/25 ---
+问题: When I was 2 years old, my brother was half my age. Now I am 60 years old, how old is my bro
+ther?...
+选项: A)A)59, B)B)69, C)C)79...
+正确答案: A
+   🤖 生成推理路径...
+Generating diverse paths for: When I was 2 years old, my brother was half my age...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: A ✅ (投票: {'A': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.575 -> A ✅
+     路径2: 0.607 -> A ✅
+     路径3: 0.550 -> A ✅
+     路径4: 0.625 -> A ✅
+     路径5: 0.596 -> A ✅
+   ⚖️  加权投票: {'A': 2.951912224292755}
+   🎯 Verifier预测: A ✅
+   📈 累计准确率: 基线90.9% vs Verifier90.9%
+
+--- 问题 12/25 ---
+问题: If Raj was one-third as old as Rahim 5 years back and Raj is 17 years old now, How old is Ra
+him now?...
+选项: A)37, B)41, C)40...
+正确答案: B
+   🤖 生成推理路径...
+Generating diverse paths for: If Raj was one-third as old as Rahim 5 years back ...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 4/5 (80.0%)
+   🗳️  基线预测: B ✅ (投票: {'B': 4, 'A': 1})
+   🔍 Verifier评分推理路径...
+     路径1: 0.637 -> B ✅
+     路径2: 0.626 -> B ✅
+     路径3: 0.612 -> B ✅
+     路径4: 0.610 -> B ✅
+     路径5: 0.668 -> A ❌
+   ⚖️  加权投票: {'B': 2.4850366711616516, 'A': 0.6684749722480774}
+   🎯 Verifier预测: B ✅
+   📊 区分度: -0.047 (正确:0.621 vs 错误:0.668)
+   📈 累计准确率: 基线91.7% vs Verifier91.7%
+
+--- 问题 13/25 ---
+问题: Find 25/12*5...
+选项: A)2.5498, B)0.4167, C)3.3987...
+正确答案: B
+   🤖 生成推理路径...
+Generating diverse paths for: Find 25/12*5...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 4/5 (80.0%)
+   🗳️  基线预测: B ✅ (投票: {'B': 4, 'A': 1})
+   🔍 Verifier评分推理路径...
+     路径1: 0.660 -> B ✅
+     路径2: 0.719 -> B ✅
+     路径3: 0.677 -> B ✅
+     路径4: 0.689 -> B ✅
+     路径5: 0.724 -> A ❌
+   ⚖️  加权投票: {'B': 2.744736969470978, 'A': 0.7243987321853638}
+   🎯 Verifier预测: B ✅
+   📊 区分度: -0.038 (正确:0.686 vs 错误:0.724)
+   📈 累计准确率: 基线92.3% vs Verifier92.3%
+
+--- 问题 14/25 ---
+问题: A newspaper costs $4 on Sunday and $1 the rest of the days of the week. If a hotel orders tw
+ice as m...
+选项: A)15, B)30, C)45...
+正确答案: A
+   🤖 生成推理路径...
+Generating diverse paths for: A newspaper costs $4 on Sunday and $1 the rest of ...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: A ✅ (投票: {'A': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.625 -> A ✅
+     路径2: 0.620 -> A ✅
+     路径3: 0.640 -> A ✅
+     路径4: 0.631 -> A ✅
+     路径5: 0.657 -> A ✅
+   ⚖️  加权投票: {'A': 3.172180950641632}
+   🎯 Verifier预测: A ✅
+   📈 累计准确率: 基线92.9% vs Verifier92.9%
+
+--- 问题 15/25 ---
+问题: If one of the roots of the quadratic equation x^2 + mx + 22 = 0 is 1.5, then what is the val
+ue of m?...
+选项: A)-23.5, B)-17.5, C)-10.5...
+正确答案: D
+   🤖 生成推理路径...
+Generating diverse paths for: If one of the roots of the quadratic equation x^2 ...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: D ✅ (投票: {'D': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.836 -> D ✅
+     路径2: 0.837 -> D ✅
+     路径3: 0.838 -> D ✅
+     路径4: 0.838 -> D ✅
+     路径5: 0.842 -> D ✅
+   ⚖️  加权投票: {'D': 4.191639959812164}
+   🎯 Verifier预测: D ✅
+   📈 累计准确率: 基线93.3% vs Verifier93.3%
+
+--- 问题 16/25 ---
+问题: Suppose for any real number x, [x] denotes the greatest integer less than or equal to x. Let
+ L(x,y) ...
+选项: A)L(x,y) = R(x,y), B)L(x,y) ≠ R(x,y), C)L(x,y) < R(x,y)...
+正确答案: D
+   🤖 生成推理路径...
+Generating diverse paths for: Suppose for any real number x, [x] denotes the gre...
+API request failed: Response ended prematurely
+Error generating response 0-0: Response ended prematurely
+API request failed: Response ended prematurely
+Error generating response 0-1: Response ended prematurely
+API request failed: HTTPSConnectionPool(host='api.deepseek.com', port=443): Read timed out.
+Error generating response 1-1: HTTPSConnectionPool(host='api.deepseek.com', port=443): Read timed 
+out.
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 3/5 (60.0%)
+   🗳️  基线预测: D ✅ (投票: {'D': 3, 'E': 2})
+   🔍 Verifier评分推理路径...
+     路径1: 0.642 -> D ✅
+     路径2: 0.636 -> E ❌
+     路径3: 0.619 -> D ✅
+     路径4: 0.694 -> E ❌
+     路径5: 0.714 -> D ✅
+   ⚖️  加权投票: {'D': 1.9755472540855408, 'E': 1.3300264477729797}
+   🎯 Verifier预测: D ✅
+   📊 区分度: -0.006 (正确:0.659 vs 错误:0.665)
+   📈 累计准确率: 基线93.8% vs Verifier93.8%
+
+--- 问题 17/25 ---
+问题: A rectangular solid, 3 x 4 x 15, is inscribed in a sphere, so that all eight of its vertices
+ are on ...
+选项: A) 13.3542, B) 15.8113, C) 18.3451...
+正确答案: B
+   🤖 生成推理路径...
+Generating diverse paths for: A rectangular solid, 3 x 4 x 15, is inscribed in a...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: B ✅ (投票: {'B': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.624 -> B ✅
+     路径2: 0.637 -> B ✅
+     路径3: 0.646 -> B ✅
+     路径4: 0.628 -> B ✅
+     路径5: 0.635 -> B ✅
+   ⚖️  加权投票: {'B': 3.1700499057769775}
+   🎯 Verifier预测: B ✅
+   📈 累计准确率: 基线94.1% vs Verifier94.1%
+
+--- 问题 18/25 ---
+问题: If m > 0, y > 0, and x is m percent of 4y, then, in terms of y, m is what percentage of x?..
+.
+选项: A)y/400, B)4y, C)50y...
+正确答案: D
+   🤖 生成推理路径...
+Generating diverse paths for: If m > 0, y > 0, and x is m percent of 4y, then, i...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: D ✅ (投票: {'D': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.853 -> D ✅
+     路径2: 0.758 -> D ✅
+     路径3: 0.827 -> D ✅
+     路径4: 0.705 -> D ✅
+     路径5: 0.855 -> D ✅
+   ⚖️  加权投票: {'D': 3.997660219669342}
+   🎯 Verifier预测: D ✅
+   📈 累计准确率: 基线94.4% vs Verifier94.4%
+
+--- 问题 19/25 ---
+问题: A club consists of members whose ages are in A.P. The common difference being 3 months. If t
+he young...
+选项: A)18, B)20, C)25...
+正确答案: C
+   🤖 生成推理路径...
+Generating diverse paths for: A club consists of members whose ages are in A.P. ...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 4/5 (80.0%)
+   🗳️  基线预测: C ✅ (投票: {'C': 4, 'D': 1})
+   🔍 Verifier评分推理路径...
+     路径1: 0.721 -> C ✅
+     路径2: 0.648 -> C ✅
+     路径3: 0.638 -> C ✅
+     路径4: 0.634 -> C ✅
+     路径5: 0.702 -> D ❌
+   ⚖️  加权投票: {'C': 2.639663517475128, 'D': 0.7023114562034607}
+   🎯 Verifier预测: C ✅
+   📊 区分度: -0.042 (正确:0.660 vs 错误:0.702)
+   📈 累计准确率: 基线94.7% vs Verifier94.7%
+
+--- 问题 20/25 ---
+问题: A sales person gets a 10% commission on each sale he makes. How many sales of $250 each must
+ he make...
+选项: A)15, B)24, C)25...
+正确答案: D
+   🤖 生成推理路径...
+Generating diverse paths for: A sales person gets a 10% commission on each sale ...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: D ✅ (投票: {'D': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.597 -> D ✅
+     路径2: 0.606 -> D ✅
+     路径3: 0.611 -> D ✅
+     路径4: 0.602 -> D ✅
+     路径5: 0.624 -> D ✅
+   ⚖️  加权投票: {'D': 3.0402676463127136}
+   🎯 Verifier预测: D ✅
+   📈 累计准确率: 基线95.0% vs Verifier95.0%
+
+--- 问题 21/25 ---
+问题: A man wants to eat fruit for breakfast and vegetable for dinner. He has 6 different types of
+ fruit a...
+选项: A)54, B)24, C)48...
+正确答案: C
+   🤖 生成推理路径...
+Generating diverse paths for: A man wants to eat fruit for breakfast and vegetab...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 4/5 (80.0%)
+   🗳️  基线预测: C ✅ (投票: {'C': 4, 'A': 1})
+   🔍 Verifier评分推理路径...
+     路径1: 0.583 -> C ✅
+     路径2: 0.579 -> C ✅
+     路径3: 0.581 -> C ✅
+     路径4: 0.603 -> C ✅
+     路径5: 0.586 -> A ❌
+   ⚖️  加权投票: {'C': 2.3451650738716125, 'A': 0.5858066082000732}
+   🎯 Verifier预测: C ✅
+   📊 区分度: 0.000 (正确:0.586 vs 错误:0.586)
+   📈 累计准确率: 基线95.2% vs Verifier95.2%
+
+--- 问题 22/25 ---
+问题: Of the 200 students in a school, at least 45% attended the prom night and at least 35% took 
+part in ...
+选项: A)27, B)81, C)90...
+正确答案: E
+   🤖 生成推理路径...
+Generating diverse paths for: Of the 200 students in a school, at least 45% atte...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: E ✅ (投票: {'E': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.630 -> E ✅
+     路径2: 0.611 -> E ✅
+     路径3: 0.616 -> E ✅
+     路径4: 0.625 -> E ✅
+     路径5: 0.623 -> E ✅
+   ⚖️  加权投票: {'E': 3.104598581790924}
+   🎯 Verifier预测: E ✅
+   📈 累计准确率: 基线95.5% vs Verifier95.5%
+
+--- 问题 23/25 ---
+问题: During one season, a tennis team won 20 matches and lost 30% of their matches. What was the 
+number o...
+选项: A)70, B)30, C)3...
+正确答案: C
+   🤖 生成推理路径...
+Generating diverse paths for: During one season, a tennis team won 20 matches an...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 0/5 (0.0%)
+   🗳️  基线预测: D ❌ (投票: {'B': 2, 'D': 3})
+   🔍 Verifier评分推理路径...
+     路径1: 0.660 -> B ❌
+     路径2: 0.712 -> D ❌
+     路径3: 0.661 -> B ❌
+     路径4: 0.655 -> D ❌
+     路径5: 0.630 -> D ❌
+   ⚖️  加权投票: {'B': 1.3208656311035156, 'D': 1.9967122077941895}
+   🎯 Verifier预测: D ❌
+   📈 累计准确率: 基线91.3% vs Verifier91.3%
+
+--- 问题 24/25 ---
+问题: A ship went on a voyage. After it had traveled 180 miles a plane started with 10 times the s
+peed of ...
+选项: A)238, B)289, C)200...
+正确答案: C
+   🤖 生成推理路径...
+Generating diverse paths for: A ship went on a voyage. After it had traveled 180...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: C ✅ (投票: {'C': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.601 -> C ✅
+     路径2: 0.578 -> C ✅
+     路径3: 0.560 -> C ✅
+     路径4: 0.567 -> C ✅
+     路径5: 0.613 -> C ✅
+   ⚖️  加权投票: {'C': 2.919718623161316}
+   🎯 Verifier预测: C ✅
+   📈 累计准确率: 基线91.7% vs Verifier91.7%
+
+--- 问题 25/25 ---
+问题: A special cereal mixture contains rice, wheat and corn in the ratio of 2:3:5. If a bag of th
+e mixtur...
+选项: A)6.5, B)7.5, C)7...
+正确答案: B
+   🤖 生成推理路径...
+Generating diverse paths for: A special cereal mixture contains rice, wheat and ...
+   ✅ 生成 5 个推理路径
+   📊 正确推理: 5/5 (100.0%)
+   🗳️  基线预测: B ✅ (投票: {'B': 5})
+   🔍 Verifier评分推理路径...
+     路径1: 0.605 -> B ✅
+     路径2: 0.601 -> B ✅
+     路径3: 0.593 -> B ✅
+     路径4: 0.594 -> B ✅
+     路径5: 0.596 -> B ✅
+   ⚖️  加权投票: {'B': 2.989148259162903}
+   🎯 Verifier预测: B ✅
+   📈 累计准确率: 基线92.0% vs Verifier92.0%
+
+================================================================================
+🏆 AQuA数据集实验最终结果
+================================================================================
+📊 基线方法（多数投票）准确率: 92.00% (23/25)
+📊 增强版Verifier准确率: 92.00% (23/25)
+📈 准确率提升: +0.00%
+
+⚡ 平手：Verifier效果与基线相当
+
+🔍 Verifier质量分析:
+   总评分范围: [0.534, 0.865]
+   正确推理平均分: 0.643 ± 0.078
+   错误推理平均分: 0.657 ± 0.034
+   整体区分度: -0.014
+   平均每题区分度: -0.008 ± 0.020
+   ⚠️  Verifier区分能力仍需提升
+
+💾 详细结果已保存到: ./outputs\aqua_verifier_final_test_20250623_004117.json
+
+================================================================================
+🎯 实验结论
+================================================================================
+📈 虽然准确率提升有限，但Verifier已具备推理质量区分能力
+   区分度: -0.014，为进一步优化奠定基础
