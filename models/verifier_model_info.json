@@ -1,0 +1,6 @@
+{
+  "model_type": "DeBERTa-v3-large",
+  "training_samples": 360,
+  "final_accuracy": 0.75,
+  "timestamp": "20250620_165530"
+}
